@@ -1,6 +1,7 @@
-import { async } from '@firebase/util';
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import { toast } from 'react-toastify';
+
 
 
 const AddProduct = () => {
@@ -9,7 +10,6 @@ const AddProduct = () => {
     const imageStorageKey = '0b8c175b6db0be88e6c9c5e4abad5ed2';
 
     const onSubmit = async data => {
-        console.log(data);
         const image = data.productsImage[0];
         const formData = new FormData();
         formData.append('image', image);
@@ -20,7 +20,35 @@ const AddProduct = () => {
         })
             .then(res => res.json())
             .then(result => {
-                console.log('imgbb', result);
+                if (result.success) {
+                    const img = result.data.url;
+                    const product = {
+                        name: data.ProductsName,
+                        img: img,
+                        price: data.price,
+                        qty: data.quantity,
+                        description: data.description,
+                        minOrder: data.minOrder
+                    }
+                    //send to database
+                    fetch('http://localhost:5000/products', {
+                        method: 'POST',
+                        headers: {
+                            'content-type': 'application/json',
+                            authorization: `bearer ${localStorage.getItem('accessToken')}`
+                        },
+                        body: JSON.stringify(product)
+                    })
+                        .then(res => res.json())
+                        .then(inserted => {
+                            if (inserted.insertedId) {
+                                toast.success('Products Uploaded successfully')
+                            }
+                            else {
+                                toast.error('fail to upload products')
+                            }
+                        })
+                }
             })
     }
 
