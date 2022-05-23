@@ -34,16 +34,16 @@ const SignUp = () => {
         signInError = <p className='text-error'><small>{error?.message || gError?.message || updateError?.message}</small></p>
     }
 
-    if (token) {
-        navigate('/');
-    }
-
     const onSubmit = async data => {
         console.log(data)
         await createUserWithEmailAndPassword(data.email, data.password);
         await updateProfile({ displayName: data.name });
-        console.log('Update Done')
     }
+
+    if (token) {
+        navigate('/');
+    }
+
     return (
         <div className='flex justify-center items-center h-screen'>
             <div className="card w-96 bg-base-100 shadow-xl">

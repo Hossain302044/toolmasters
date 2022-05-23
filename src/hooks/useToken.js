@@ -9,13 +9,16 @@ const useToken = user => {
             fetch(`http://localhost:5000/user/${email}`, {
                 method: 'PUT',
                 headers: {
-                    'content-tyoe': 'application/json'
+                    'content-type': 'application/json'
                 },
                 body: JSON.stringify(currentUser)
             })
                 .then(res => res.json())
                 .then(data => {
-                    console.log("data inside useToken", data);
+                    console.log('data inside useToken', data);
+                    const accessToken = data.token;
+                    localStorage.setItem('accessToken', accessToken);
+                    setToken(accessToken);
                 })
         }
 

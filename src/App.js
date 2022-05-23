@@ -12,6 +12,9 @@ import ManageOrder from './pages/DashBoard/ManageOrder';
 import ManageProduct from './pages/DashBoard/ManageProduct';
 import Users from './pages/DashBoard/Users';
 import AddProduct from './pages/DashBoard/AddProduct';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import RequireAdmin from './pages/RequireAdmin';
 
 function App() {
   return (
@@ -45,13 +48,16 @@ function App() {
             <Route path='myorders' element={<MyOrders></MyOrders>} />
             <Route path='manageorder' element={<ManageOrder></ManageOrder>} />
             <Route path='manageproduct' element={<ManageProduct></ManageProduct>} />
-            <Route path='users' element={<Users></Users>} />
+            <Route path='users' element={<RequireAdmin>
+              <Users></Users>
+            </RequireAdmin>} />
             <Route path='addproduct' element={<AddProduct></AddProduct>} />
           </Route>
         </Routes>
       </Navbar>
-      <Footer />
 
+      <Footer />
+      <ToastContainer />
     </div>
   );
 }
