@@ -15,6 +15,7 @@ import AddProduct from './pages/DashBoard/AddProduct';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import RequireAdmin from './pages/RequireAdmin';
+import ProductsRow from './components/Shop/ProductsRow';
 
 function App() {
   return (
@@ -40,6 +41,9 @@ function App() {
               ))
             }
           </Route> */}
+          <Route path='/products/:id' element={<RequireAuth>
+            <ProductsRow></ProductsRow>
+          </RequireAuth>}></Route>
           <Route path='/dashboard' element={<RequireAuth>
             <Dashboard></Dashboard>
           </RequireAuth>}>

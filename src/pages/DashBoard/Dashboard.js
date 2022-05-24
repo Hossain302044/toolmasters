@@ -3,15 +3,11 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link, Outlet } from 'react-router-dom';
 import auth from '../../firebase.init';
 import useAdmin from '../../hooks/useAdmin';
-import Loading from '../../shared/Loading';
 
 const Dashboard = () => {
     const [user] = useAuthState(auth);
-    const [admin, adminLoading] = useAdmin(user);
+    const [admin] = useAdmin(user);
 
-    if (adminLoading) {
-        return <Loading></Loading>
-    }
 
     return (
         <div className="drawer drawer-mobile">

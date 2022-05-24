@@ -1,8 +1,7 @@
 import React from 'react';
 
-const ManageProductRow = ({ product, index }) => {
-    const { name, price, img, qty } = product;
-
+const ManageProductRow = ({ product, index, DeleteToProduct }) => {
+    const { _id, name, price, img, qty } = product;
 
     return (
         <tr>
@@ -11,7 +10,7 @@ const ManageProductRow = ({ product, index }) => {
             <td>{name}</td>
             <td>{qty} pcs</td>
             <td>${price}</td>
-            <td><button class="btn btn-ghost btn-xs bg-error">Delete</button></td>
+            <td><button onClick={() => DeleteToProduct(_id)} class="btn btn-ghost btn-xs bg-error">Delete</button></td>
         </tr>
     );
 };
