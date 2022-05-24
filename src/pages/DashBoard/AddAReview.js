@@ -34,7 +34,7 @@ const AddAReview = () => {
     return (
         <div className=''>
             <div className='text-center'><h2 className='text-2xl font-bold text-primary uppercase px-5 my-10'>Add Review</h2></div>
-            <div class="divider"></div>
+            <div className="divider"></div>
             <div className='ml-10'>
                 <form onSubmit={handleSubmit(onSubmit)}>
 
@@ -42,7 +42,7 @@ const AddAReview = () => {
                         <label className="label">
                             <span className="label-text">Rating Number</span>
                         </label>
-                        <select class="select select-bordered" {...register("rating", {
+                        <select className="select select-bordered" {...register("rating", {
                             required: {
                                 value: true,
                                 message: 'Rating is Required'
@@ -63,7 +63,7 @@ const AddAReview = () => {
                         <label className="label">
                             <span className="label-text">Description</span>
                         </label>
-                        <textarea class="textarea textarea-bordered h-24"
+                        <textarea className="textarea textarea-bordered h-24"
                             {...register("description", {
                                 required: {
                                     value: true,

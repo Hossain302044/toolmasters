@@ -34,9 +34,9 @@ const ManageProduct = () => {
     return (
         <div>
             <div className='text-center'><h2 className='text-2xl font-bold text-primary uppercase px-5 my-10'>All Products</h2></div>
-            <div class="divider"></div>
-            <div class="overflow-x-auto">
-                <table class="table table-zebra w-full">
+            <div className="divider"></div>
+            <div className="overflow-x-auto">
+                <table className="table table-zebra w-full">
                     <thead>
                         <tr>
                             <th></th>

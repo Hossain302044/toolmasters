@@ -1,0 +1,117 @@
+import React from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { toast } from 'react-toastify';
+import auth from '../../firebase.init';
+
+const BookingProducts = ({ booking, orderQty, setBooking }) => {
+    const [user] = useAuthState(auth);
+    const { _id, img, name, price, qty } = booking;
+    const totalPrice = parseInt(orderQty) * parseInt(price);
+    const restQty = qty - orderQty;
+
+    const handleBooking = event => {
+        event.preventDefault();
+        const phone = event.target.phone.value;
+        const address = event.target.address.value;
+
+        const booking = {
+            productId: _id,
+            productName: name,
+            qty: orderQty,
+            price: totalPrice,
+            userName: user.displayName,
+            email: user.email,
+            phone,
+            address
+        }
+        fetch('http://localhost:5000/booking', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json',
+                authorization: `bearer ${localStorage.getItem('accessToken')}`
+            },
+            body: JSON.stringify(booking)
+        })
+            .then(res => res.json())
+            .then(result => {
+                if (result.success) {
+                    const quantity = {
+                        qty: restQty
+                    }
+                    toast.success('congratulations !! for your Order');
+                    fetch(`http://localhost:5000/products/${_id}`, {
+                        method: 'PATCH',
+                        headers: {
+                            'content-type': 'application/json',
+                            authorization: `bearer ${localStorage.getItem('accessToken')}`
+                        },
+                        body: JSON.stringify(quantity)
+                    })
+                        .then(res => res.json())
+                        .then(result => {
+                            console.log("update", result);
+                        })
+                }
+                //to closs modal
+                setBooking(null);
+            })
+
+    }
+
+
+    return (
+        <div>
+            <input type="checkbox" id="booking-modal" class="modal-toggle" />
+            <div class="modal">
+                <div class="modal-box w-11/12 max-w-5xl">
+                    <label for="booking-modal" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+                    <h2 class="card-title text-secondary">{name}</h2>
+                    <div class="card lg:card-side bg-base-100 mt-10 shadow-xl">
+                        <figure className='border m-3'><img src={img} alt="Album" /></figure>
+                        <div class="card-body">
+
+                            <form onSubmit={handleBooking}>
+                                <div class="form-control w-full max-w-xs">
+                                    <label class="label">
+                                        <span class="label-text">Name</span>
+                                    </label>
+                                    <input type="text" name='name' value={user.displayName} disabled class="input input-bordered w-full max-w-xs" />
+                                </div>
+                                <div class="form-control w-full max-w-xs">
+                                    <label class="label">
+                                        <span class="label-text">Order Quantity</span>
+                                    </label>
+                                    <input type="text" name='qty' value={orderQty} disabled class="input input-bordered w-full max-w-xs" />
+                                </div>
+                                <div class="form-control w-full max-w-xs">
+                                    <label class="label">
+                                        <span class="label-text">Order Quantity</span>
+                                    </label>
+                                    <input type="text" name='price' value={"$" + totalPrice} disabled class="input input-bordered w-full max-w-xs" />
+                                </div>
+                                <div class="form-control w-full max-w-xs">
+                                    <label class="label">
+                                        <span class="label-text">Phone Number</span>
+                                    </label>
+                                    <input type="text" name='phone' placeholder='Please give me your contact number' class="input input-bordered w-full max-w-xs" required />
+                                </div>
+                                <div class="form-control">
+                                    <label class="label">
+                                        <span class="label-text">Shipping Locations</span>
+                                    </label>
+                                    <textarea name='address' class="textarea textarea-bordered w-full max-w-xs h-24" placeholder="Address Please" required></textarea>
+                                </div>
+
+                                <div class="card-actions justify-end">
+                                    <input class="btn btn-primary" type="submit" value="ORDER NOW" />
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div >
+    );
+};
+
+export default BookingProducts;

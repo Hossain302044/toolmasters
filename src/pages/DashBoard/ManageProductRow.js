@@ -10,7 +10,7 @@ const ManageProductRow = ({ product, index, DeleteToProduct }) => {
             <td>{name}</td>
             <td>{qty} pcs</td>
             <td>${price}</td>
-            <td><button onClick={() => DeleteToProduct(_id)} class="btn btn-ghost btn-xs bg-error">Delete</button></td>
+            <td><button onClick={() => DeleteToProduct(_id)} className="btn btn-ghost btn-xs bg-error">Delete</button></td>
         </tr>
     );
 };
