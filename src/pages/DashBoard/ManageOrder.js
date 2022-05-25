@@ -7,7 +7,7 @@ const ManageOrder = () => {
         fetch('http://localhost:5000/booking', {
             method: "GET",
             headers: {
-                authorization: `bearer ${localStorage.getItem('accessToken')}`
+                'authorization': `bearer ${localStorage.getItem('accessToken')}`
             }
         })
             .then(res => res.json())

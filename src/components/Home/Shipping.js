@@ -6,11 +6,11 @@ import { FcShipped } from "react-icons/fc";
 const Shipping = () => {
     return (
         <div>
-            <div class="max-w-screen-xl mx-auto">
-                <div class="stat border-[1px] border-black rounded-md my-10 py-10 flex justify-between">
+            <div className="max-w-screen-xl mx-auto">
+                <div className="stat border-[1px] border-black rounded-md my-10 py-10 flex justify-between">
                     <div>
                         <div className='flex'>
-                            <div class="stat">
+                            <div className="stat">
                                 <div className='flex'>
                                     <FcShipped className='w-14 h-14 mr-5' />
                                     <div>
@@ -19,8 +19,8 @@ const Shipping = () => {
                                     </div>
                                 </div>
                             </div>
-                            <div class="divider lg:divider-horizontal"></div>
-                            <div class="stat">
+                            <div className="divider lg:divider-horizontal"></div>
+                            <div className="stat">
                                 <div className='flex'>
                                     <FcShipped className='w-14 h-14 mr-5' />
                                     <div>
@@ -29,8 +29,8 @@ const Shipping = () => {
                                     </div>
                                 </div>
                             </div>
-                            <div class="divider lg:divider-horizontal"></div>
-                            <div class="stat">
+                            <div className="divider lg:divider-horizontal"></div>
+                            <div className="stat">
                                 <div className='flex'>
                                     <FcShipped className='w-14 h-14 mr-5' />
                                     <div>
@@ -39,8 +39,8 @@ const Shipping = () => {
                                     </div>
                                 </div>
                             </div>
-                            <div class="divider lg:divider-horizontal"></div>
-                            <div class="stat">
+                            <div className="divider lg:divider-horizontal"></div>
+                            <div className="stat">
                                 <div className='flex'>
                                     <FcShipped className='w-14 h-14 mr-5' />
 

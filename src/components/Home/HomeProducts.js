@@ -10,9 +10,10 @@ const HomeProducts = () => {
     }, [])
     return (
         <div className='max-w-screen-xl mx-auto my-[80px]'>
-            <div className='text-center py-6 text-slate-300'>
+            <div className='text-center py-6 my-20 text-slate-300'>
                 <h2 className='text-2xl uppercase'>Our Products</h2>
                 <h3 className='text-5xl font-bold text-secondary py-4'>The right price for<br /> your products!</h3>
+                <div class="mt-5 w-20 h-2 mx-auto bg-primary"></div>
             </div>
             <div className='grid grid-cols-3 gap-10'>
                 {

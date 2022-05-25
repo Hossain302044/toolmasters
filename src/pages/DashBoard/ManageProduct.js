@@ -7,7 +7,7 @@ const ManageProduct = () => {
         fetch('http://localhost:5000/products', {
             method: "GET",
             headers: {
-                authorization: `bearer ${localStorage.getItem('accessToken')}`
+                'authorization': `bearer ${localStorage.getItem('accessToken')}`
             }
         })
             .then(res => res.json())
@@ -21,7 +21,7 @@ const ManageProduct = () => {
             fetch(url, {
                 method: "DELETE",
                 headers: {
-                    authorization: `bearer ${localStorage.getItem('accessToken')}`
+                    'authorization': `bearer ${localStorage.getItem('accessToken')}`
                 }
             })
                 .then(res => res.json())

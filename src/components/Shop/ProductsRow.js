@@ -7,13 +7,12 @@ const ProductsRow = () => {
     const [product, setProduct] = useState({});
     const [booking, setBooking] = useState(null);
     const { qty, name, description, price, img, minOrder } = product;
-    let finalQry;
     useEffect(() => {
         const url = `http://localhost:5000/products/${id}`;
         fetch(url)
             .then(res => res.json())
             .then(data => setProduct(data))
-    }, [])
+    }, [id])
 
     const [orderQty, setOrderQty] = useState(0);
     useEffect(() => {

@@ -28,7 +28,7 @@ const BookingProducts = ({ booking, orderQty, setBooking }) => {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
-                authorization: `bearer ${localStorage.getItem('accessToken')}`
+                'authorization': `bearer ${localStorage.getItem('accessToken')}`
             },
             body: JSON.stringify(booking)
         })
@@ -43,7 +43,7 @@ const BookingProducts = ({ booking, orderQty, setBooking }) => {
                         method: 'PATCH',
                         headers: {
                             'content-type': 'application/json',
-                            authorization: `bearer ${localStorage.getItem('accessToken')}`
+                            'authorization': `bearer ${localStorage.getItem('accessToken')}`
                         },
                         body: JSON.stringify(quantity)
                     })
@@ -61,49 +61,49 @@ const BookingProducts = ({ booking, orderQty, setBooking }) => {
 
     return (
         <div>
-            <input type="checkbox" id="booking-modal" class="modal-toggle" />
-            <div class="modal">
-                <div class="modal-box w-11/12 max-w-5xl">
-                    <label for="booking-modal" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
-                    <h2 class="card-title text-secondary">{name}</h2>
-                    <div class="card lg:card-side bg-base-100 mt-10 shadow-xl">
+            <input type="checkbox" id="booking-modal" className="modal-toggle" />
+            <div className="modal">
+                <div className="modal-box w-11/12 max-w-5xl">
+                    <label for="booking-modal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+                    <h2 className="card-title text-secondary">{name}</h2>
+                    <div className="card lg:card-side bg-base-100 mt-10 shadow-xl">
                         <figure className='border m-3'><img src={img} alt="Album" /></figure>
-                        <div class="card-body">
+                        <div className="card-body">
 
                             <form onSubmit={handleBooking}>
-                                <div class="form-control w-full max-w-xs">
-                                    <label class="label">
-                                        <span class="label-text">Name</span>
+                                <div className="form-control w-full max-w-xs">
+                                    <label className="label">
+                                        <span className="label-text">Name</span>
                                     </label>
-                                    <input type="text" name='name' value={user.displayName} disabled class="input input-bordered w-full max-w-xs" />
+                                    <input type="text" name='name' value={user.displayName} disabled className="input input-bordered w-full max-w-xs" />
                                 </div>
-                                <div class="form-control w-full max-w-xs">
-                                    <label class="label">
-                                        <span class="label-text">Order Quantity</span>
+                                <div className="form-control w-full max-w-xs">
+                                    <label className="label">
+                                        <span className="label-text">Order Quantity</span>
                                     </label>
-                                    <input type="text" name='qty' value={orderQty} disabled class="input input-bordered w-full max-w-xs" />
+                                    <input type="text" name='qty' value={orderQty} disabled className="input input-bordered w-full max-w-xs" />
                                 </div>
-                                <div class="form-control w-full max-w-xs">
-                                    <label class="label">
-                                        <span class="label-text">Order Quantity</span>
+                                <div className="form-control w-full max-w-xs">
+                                    <label className="label">
+                                        <span className="label-text">Order Quantity</span>
                                     </label>
-                                    <input type="text" name='price' value={"$" + totalPrice} disabled class="input input-bordered w-full max-w-xs" />
+                                    <input type="text" name='price' value={"$" + totalPrice} disabled className="input input-bordered w-full max-w-xs" />
                                 </div>
-                                <div class="form-control w-full max-w-xs">
-                                    <label class="label">
-                                        <span class="label-text">Phone Number</span>
+                                <div className="form-control w-full max-w-xs">
+                                    <label className="label">
+                                        <span className="label-text">Phone Number</span>
                                     </label>
-                                    <input type="text" name='phone' placeholder='Please give me your contact number' class="input input-bordered w-full max-w-xs" required />
+                                    <input type="text" name='phone' placeholder='Please give me your contact number' className="input input-bordered w-full max-w-xs" required />
                                 </div>
-                                <div class="form-control">
-                                    <label class="label">
-                                        <span class="label-text">Shipping Locations</span>
+                                <div className="form-control">
+                                    <label className="label">
+                                        <span className="label-text">Shipping Locations</span>
                                     </label>
-                                    <textarea name='address' class="textarea textarea-bordered w-full max-w-xs h-24" placeholder="Address Please" required></textarea>
+                                    <textarea name='address' className="textarea textarea-bordered w-full max-w-xs h-24" placeholder="Address Please" required></textarea>
                                 </div>
 
-                                <div class="card-actions justify-end">
-                                    <input class="btn btn-primary" type="submit" value="ORDER NOW" />
+                                <div className="card-actions justify-end">
+                                    <input className="btn btn-primary" type="submit" value="ORDER NOW" />
                                 </div>
                             </form>
                         </div>

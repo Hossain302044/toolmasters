@@ -19,9 +19,7 @@ const MyOrders = () => {
             }
         }
         getMyProducts();
-    }, [user])
-    console.log(orders);
-    console.log(orders);
+    }, [user]);
     return (
         <div>
             <div className='text-center'><h2 className='text-2xl font-bold text-primary uppercase px-5 my-10'>My Products</h2></div>

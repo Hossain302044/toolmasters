@@ -1,13 +1,12 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import me from './../../assets/port/me.jpg'
 
 const PortfolioRow = () => {
     return (
 
-        <div class="card  w-96 md:w-full lg:w-[1240px] my-10 mx-auto lg:card-side bg-base-100 shadow-xl">
+        <div className="card  w-96 md:w-full lg:w-[1240px] my-10 mx-auto lg:card-side bg-base-100 shadow-xl">
             <figure className='lg:w-1/2'><img src={me} className='w-full' alt="Album" /></figure>
-            <div class="card-body lg:w-1/2">
+            <div className="card-body lg:w-1/2">
                 <h2 className="lg:text-4xl text-2xl font-bold text-primary uppercase">
                     Mohammad Hossain Ahmed
                 </h2>
@@ -30,7 +29,6 @@ const PortfolioRow = () => {
                 </div>
                 <div className='divider'></div>
                 <div>
-
                 </div>
             </div>
         </div>

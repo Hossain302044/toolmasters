@@ -1,4 +1,5 @@
 import React from 'react';
+import Counters from '../components/Home/Counters';
 import Hero from '../components/Home/Hero';
 import HeroCard from '../components/Home/HeroCard';
 import HomeProducts from '../components/Home/HomeProducts';
@@ -12,6 +13,7 @@ const Home = () => {
             <Hero />
             <HeroCard />
             <HomeProducts />
+            <Counters />
             <Reviews />
             <Shipping />
             <SocailIcon />
