@@ -1,25 +1,41 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { useQuery } from 'react-query';
 import auth from '../../firebase.init';
+import Loading from '../../shared/Loading';
 import MyOrderRow from './MyOrderRow';
 
 const MyOrders = () => {
-    const [orders, setOrders] = useState('');
+    // const [orders, setOrders] = useState('');
     const [user] = useAuthState(auth);
-    useEffect(() => {
-        const getMyProducts = async () => {
-            const email = user?.email;
-            const url = `http://localhost:5000/bookings?email=${email}`;
-            try {
-                await fetch(url)
-                    .then(res => res.json())
-                    .then(data => setOrders(data))
-            } catch (error) {
-                console.log(error?.message)
-            }
+
+    const email = user?.email;
+    const { data: orders, isLoading, refetch } = useQuery('orders', () => fetch(`http://localhost:5000/bookings?email=${email}`, {
+        method: 'GET',
+        headers: {
+            'authorization': `bearer ${localStorage.getItem('accessToken')}`
         }
-        getMyProducts();
-    }, [user]);
+    }).then(res => res.json()));
+
+    if (isLoading) {
+        return <Loading></Loading>
+    }
+
+    // useEffect(() => {
+    //     const getMyProducts = async () => {
+    //         const email = user?.email;
+    //         const url = `http://localhost:5000/bookings?email=${email}`;
+    //         try {
+    //             await fetch(url)
+    //                 .then(res => res.json())
+    //                 .then(data => setOrders(data))
+    //         } catch (error) {
+    //             console.log(error?.message)
+    //         }
+    //     }
+    //     getMyProducts();
+    // }, [user]);
+
     return (
         <div>
             <div className='text-center'><h2 className='text-2xl font-bold text-primary uppercase px-5 my-10'>My Products</h2></div>
