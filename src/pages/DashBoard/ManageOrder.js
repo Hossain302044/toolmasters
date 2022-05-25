@@ -15,7 +15,7 @@ const ManageOrder = () => {
     }, [])
     return (
         <div>
-            <div className='text-center'><h2 className='text-2xl font-bold text-primary uppercase px-5 my-10'>All Products</h2></div>
+            <div className='text-center'><h2 className='text-2xl font-bold text-primary uppercase px-5 my-10'>Manage Products</h2></div>
             <div className="divider"></div>
             <div className="overflow-x-auto">
                 <table className="table table-zebra w-full">

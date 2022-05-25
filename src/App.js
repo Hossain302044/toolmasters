@@ -16,6 +16,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import RequireAdmin from './pages/RequireAdmin';
 import ProductsRow from './components/Shop/ProductsRow';
+import Payment from './pages/DashBoard/Payment';
 
 function App() {
   return (
@@ -49,6 +50,7 @@ function App() {
           </RequireAuth>}>
             <Route index element={<MyProfile></MyProfile>} />
             <Route path='addareview' element={<AddAReview></AddAReview>} />
+            <Route path='payment/:id' element={<Payment></Payment>} />
             <Route path='myorders' element={<MyOrders></MyOrders>} />
             <Route path='manageorder' element={<ManageOrder></ManageOrder>} />
             <Route path='manageproduct' element={<ManageProduct></ManageProduct>} />
