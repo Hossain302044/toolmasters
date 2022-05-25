@@ -6,11 +6,12 @@ const PaymentFrom = ({ booking }) => {
     const stripe = useStripe();
     const elements = useElements();
     const [cardError, setCardError] = useState('');
+    const [processing, setProcessing] = useState(false);
     const [success, setSuccess] = useState('');
     const [transactionId, setTransactionId] = useState('');
     const [clientSecret, setClientSecret] = useState('');
 
-    const { price, email, userName } = booking;
+    const { _id, price, email, userName } = booking;
 
     useEffect(() => {
         fetch('http://localhost:5000/create-payment-intent', {
@@ -50,6 +51,8 @@ const PaymentFrom = ({ booking }) => {
 
         setCardError(error?.message || '');
         setSuccess('');
+        setProcessing(true)
+
 
         //confirm card payments
 
@@ -67,12 +70,32 @@ const PaymentFrom = ({ booking }) => {
         );
 
         if (intentError) {
-            setCardError(intentError?.message)
+            setCardError(intentError?.message);
+            setProcessing(false);
         }
         else {
             setCardError('');
-            transactionId(paymentIntent.id);
+            setTransactionId(paymentIntent.id);
             setSuccess('Congrats!! Your payment is complete')
+
+            // payment on database
+            const payment = {
+                productID: _id,
+                transactionId: paymentIntent.id
+            }
+
+            fetch(`http://localhost:5000/booking/${_id}`, {
+                method: 'PATCH',
+                headers: {
+                    'content-type': 'application/json',
+                    'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+                },
+                body: JSON.stringify(payment)
+            }).then(res => res.json())
+                .then(data => {
+                    setProcessing(false)
+                    console.log(data);
+                })
         }
     }
     return (
@@ -105,7 +128,7 @@ const PaymentFrom = ({ booking }) => {
             {
                 success && <div>
                     <p className='text-green-500'>{success}</p>
-                    <p className='text-green-500'>Your Transaction Id: <span className='text-primary font-bold'>{success}</span></p>
+                    <p className='text-green-500'>Your Transaction Id: <span className='text-primary font-bold'>{transactionId}</span></p>
                 </div>
             }
         </>

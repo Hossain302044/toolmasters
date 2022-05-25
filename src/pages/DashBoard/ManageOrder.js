@@ -1,18 +1,21 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import { useQuery } from 'react-query';
+import Loading from '../../shared/Loading';
 import ManageOrderRow from './ManageOrderRow';
 
 const ManageOrder = () => {
-    const [orders, setOrders] = useState([]);
-    useEffect(() => {
-        fetch('http://localhost:5000/booking', {
-            method: "GET",
-            headers: {
-                'authorization': `bearer ${localStorage.getItem('accessToken')}`
-            }
-        })
-            .then(res => res.json())
-            .then(data => setOrders(data))
-    }, [])
+
+    const { data: orders, isLoading, refetch } = useQuery('orders', () => fetch('http://localhost:5000/booking', {
+        method: 'GET',
+        headers: {
+            'authorization': `bearer ${localStorage.getItem('accessToken')}`
+        }
+    }).then(res => res.json()));
+
+    if (isLoading) {
+        return <Loading></Loading>
+    }
+
     return (
         <div>
             <div className='text-center'><h2 className='text-2xl font-bold text-primary uppercase px-5 my-10'>Manage Products</h2></div>
@@ -35,6 +38,7 @@ const ManageOrder = () => {
                                 key={order._id}
                                 order={order}
                                 index={index}
+                                refetch={refetch}
                             ></ManageOrderRow>)
                         }
                     </tbody>
