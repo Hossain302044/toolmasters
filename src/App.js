@@ -52,13 +52,26 @@ function App() {
             <Route path='addareview' element={<AddAReview></AddAReview>} />
             <Route path='payment/:id' element={<Payment></Payment>} />
             <Route path='myorders' element={<MyOrders></MyOrders>} />
-            <Route path='manageorder' element={<ManageOrder></ManageOrder>} />
-            <Route path='manageproduct' element={<ManageProduct></ManageProduct>} />
-            <Route path='users' element={<Users></Users>} />
-            {/* <Route path='users' element={<RequireAdmin>
-              <Users></Users>
-            </RequireAdmin>} /> */}
-            <Route path='addproduct' element={<AddProduct></AddProduct>} />
+            <Route path='manageorder' element={
+              <RequireAdmin>
+                <ManageOrder></ManageOrder>
+              </RequireAdmin>
+            } />
+            <Route path='manageproduct' element={
+              <RequireAdmin>
+                <ManageProduct></ManageProduct>
+              </RequireAdmin>
+            } />
+            <Route path='users' element={
+              <RequireAdmin>
+                <Users></Users>
+              </RequireAdmin>
+            } />
+            <Route path='addproduct' element={
+              <RequireAdmin>
+                <AddProduct></AddProduct>
+              </RequireAdmin>
+            } />
           </Route>
         </Routes>
       </Navbar>
