@@ -85,7 +85,7 @@ const BookingProducts = ({ booking, orderQty, setBooking }) => {
                                 </div>
                                 <div className="form-control w-full max-w-xs">
                                     <label className="label">
-                                        <span className="label-text">Order Quantity</span>
+                                        <span className="label-text">Total Price</span>
                                     </label>
                                     <input type="text" name='price' value={"$" + totalPrice} disabled className="input input-bordered w-full" />
                                 </div>
