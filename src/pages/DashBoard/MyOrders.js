@@ -10,7 +10,7 @@ const MyOrders = () => {
     const [user] = useAuthState(auth);
 
     const email = user?.email;
-    const { data: orders, isLoading } = useQuery('orders', () => fetch(`https://ancient-hollows-97544.herokuapp.com/bookings?email=${email}`, {
+    const { data: orders, isLoading, refetch } = useQuery('orders', () => fetch(`https://ancient-hollows-97544.herokuapp.com/bookings?email=${email}`, {
         method: 'GET',
         headers: {
             'authorization': `bearer ${localStorage.getItem('accessToken')}`
@@ -21,6 +21,22 @@ const MyOrders = () => {
         return <Loading></Loading>
     }
 
+    const DeleteToProduct = id => {
+        const proceed = window.confirm('are you sure we want to delete?');
+        if (proceed) {
+            const url = `http://localhost:5000/bookings/${id}`;
+            fetch(url, {
+                method: "DELETE",
+                headers: {
+                    'authorization': `bearer ${localStorage.getItem('accessToken')}`
+                }
+            })
+                .then(res => res.json())
+                .then(data => {
+                    refetch();
+                })
+        }
+    }
     // useEffect(() => {
     //     const getMyProducts = async () => {
     //         const email = user?.email;
@@ -58,6 +74,7 @@ const MyOrders = () => {
                             orders && orders.map(order => <MyOrderRow
                                 key={order._id}
                                 order={order}
+                                DeleteToProduct={DeleteToProduct}
                             ></MyOrderRow>)
                         }
                     </tbody>
