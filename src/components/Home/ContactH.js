@@ -74,7 +74,7 @@ const ContactH = () => {
                             <textarea className="textarea textarea-bordered h-24" placeholder="Message"></textarea>
                         </div>
                         <div className="form-control mt-6">
-                            <button className="btn btn-primary">Login</button>
+                            <button className="btn btn-primary text-white font-bold">send message</button>
                         </div>
                     </div>
                 </div>
