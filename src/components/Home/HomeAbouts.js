@@ -4,7 +4,6 @@ import parts from './../../assets/img/20319e.jpg'
 import wordshop from './../../assets/img/Mold-Design.jpg'
 
 const HomeAbouts = () => {
-    const headerText = `Forward Thinking.${<br />} Available Now.`
     return (
         <div className='my-[80px]'>
             <div className='text-center my-20'>
