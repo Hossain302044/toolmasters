@@ -5,7 +5,7 @@ import ManageOrderRow from './ManageOrderRow';
 
 const ManageOrder = () => {
 
-    const { data: orders, isLoading, refetch } = useQuery('orders', () => fetch('http://localhost:5000/booking', {
+    const { data: orders, isLoading, refetch } = useQuery('orders', () => fetch('https://ancient-hollows-97544.herokuapp.com/booking', {
         method: 'GET',
         headers: {
             'authorization': `bearer ${localStorage.getItem('accessToken')}`

@@ -5,7 +5,7 @@ const ManageOrderRow = ({ order, index, refetch }) => {
     const { _id, price, qty, productName, userName, paid, delivery } = order;
 
     const handleStatus = (id) => {
-        fetch(`http://localhost:5000/bookings/${id}`, {
+        fetch(`https://ancient-hollows-97544.herokuapp.com/bookings/${id}`, {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json',

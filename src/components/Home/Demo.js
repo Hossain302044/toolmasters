@@ -14,7 +14,7 @@ const Demo = ({ images, header, content }) => {
                         <div className="hero-content justify-between w-full text-neutral-content">
                             <div>
                                 <div className='md:w-3/6 '>
-                                    <h1 className="mb-5 text-5xl font-bold text-secondary">{header}</h1>
+                                    <h1 className="mb-5 text-5xl font-bold uppercase text-secondary">{header}</h1>
                                     <p className="mb-5 text-base-100">{content}</p>
                                     <button className="btn btn-primary">SHOPPING NOW</button>
                                 </div>

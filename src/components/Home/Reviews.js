@@ -18,7 +18,7 @@ import ReviewsCard from './ReviewsCard';
 const Reviews = () => {
     const [reviews, setReviews] = useState('');
     useEffect(() => {
-        fetch('http://localhost:5000/reviews')
+        fetch('https://ancient-hollows-97544.herokuapp.com/reviews')
             .then(res => res.json())
             .then(data => setReviews(data))
     }, [])
@@ -35,16 +35,31 @@ const Reviews = () => {
                         delay: 5000,
                         disableOnInteraction: false
                     }}
-                    spaceBetween={30}
+
                     centeredSlides={true}
-                    slidesPerView={3}
-                    scrollbar={{ draggable: true }}
+                    slidesPerView={1}
+                    spaceBetween={10}
                     onSlideChange={() => console.log('')}
                     onSwiper={(swiper) => console.log(swiper)}
+                    scrollbar={{ draggable: true }}
                     pagination={{
                         clickable: true,
                     }}
-                    modules={[Autoplay, Pagination, Scrollbar, A11y]}
+                    breakpoints={{
+                        640: {
+                            slidesPerView: 1,
+                            spaceBetween: 20,
+                        },
+                        768: {
+                            slidesPerView: 2,
+                            spaceBetween: 40,
+                        },
+                        1024: {
+                            slidesPerView: 3,
+                            spaceBetween: 50,
+                        },
+                    }}
+                    modules={[Pagination, Autoplay, A11y, Scrollbar]}
                     className="mySwiper"
                 >
                     {

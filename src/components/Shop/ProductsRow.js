@@ -8,7 +8,7 @@ const ProductsRow = () => {
     const [booking, setBooking] = useState(null);
     const { qty, name, description, price, img, minOrder } = product;
     useEffect(() => {
-        const url = `http://localhost:5000/products/${id}`;
+        const url = `https://ancient-hollows-97544.herokuapp.com/products/${id}`;
         fetch(url)
             .then(res => res.json())
             .then(data => setProduct(data))
@@ -17,7 +17,7 @@ const ProductsRow = () => {
     const [orderQty, setOrderQty] = useState(0);
     useEffect(() => {
         setOrderQty(minOrder);
-    }, [product])
+    }, [minOrder])
 
     const handleMinOrder = (event) => {
         setOrderQty(event.target.value);

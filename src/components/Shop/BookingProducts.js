@@ -24,7 +24,7 @@ const BookingProducts = ({ booking, orderQty, setBooking }) => {
             phone,
             address
         }
-        fetch('http://localhost:5000/booking', {
+        fetch('https://ancient-hollows-97544.herokuapp.com/booking', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
@@ -39,7 +39,7 @@ const BookingProducts = ({ booking, orderQty, setBooking }) => {
                         qty: restQty
                     }
                     toast.success('congratulations !! for your Order');
-                    fetch(`http://localhost:5000/products/${_id}`, {
+                    fetch(`https://ancient-hollows-97544.herokuapp.com/products/${_id}`, {
                         method: 'PATCH',
                         headers: {
                             'content-type': 'application/json',

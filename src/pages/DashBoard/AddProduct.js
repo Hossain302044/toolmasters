@@ -31,7 +31,7 @@ const AddProduct = () => {
                         minOrder: data.minOrder
                     }
                     //send to database
-                    fetch('http://localhost:5000/products', {
+                    fetch('https://ancient-hollows-97544.herokuapp.com/products', {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json',

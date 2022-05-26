@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
 
 const AddAReview = () => {
-    const { register, formState: { errors }, handleSubmit } = useForm();
+    const { reset, register, formState: { errors }, handleSubmit } = useForm();
     const [user] = useAuthState(auth);
     const onSubmit = async data => {
         const review = {
@@ -13,7 +13,7 @@ const AddAReview = () => {
             description: data.description,
             rating: data.rating
         }
-        fetch('http://localhost:5000/reviews', {
+        fetch('https://ancient-hollows-97544.herokuapp.com/reviews', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
@@ -24,7 +24,8 @@ const AddAReview = () => {
             .then(res => res.json())
             .then(inserted => {
                 if (inserted.insertedId) {
-                    toast.success('Thanks For Your Reviews')
+                    toast.success('Thanks For Your Reviews');
+                    reset();
                 }
                 else {
                     toast.error('Failed !! please try again')

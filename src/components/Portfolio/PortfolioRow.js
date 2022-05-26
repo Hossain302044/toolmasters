@@ -29,6 +29,15 @@ const PortfolioRow = () => {
                 </div>
                 <div className='divider'></div>
                 <div>
+                    <h2 className='text-2xl'>
+                        Manufacture website: <div className='link link-primary'> https://manufacturer-website-cli-62442.firebaseapp.com/</div>
+                    </h2>
+                    <h2 className='text-2xl'>
+                        Warehouse Management website: <div className='link link-primary'>https://warehouse-management-side.web.app/</div>
+                    </h2>
+                    <h2 className='text-2xl'>
+                        Fitness website: <div className='link link-primary'>https://ayra-fitness.web.app/</div>
+                    </h2>
                 </div>
             </div>
         </div>

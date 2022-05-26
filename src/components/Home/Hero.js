@@ -42,10 +42,10 @@ const Hero = () => {
                     <Demo images={oil} content="Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi." header="Oil Power With Best One Oil" />
                 </SwiperSlide>
                 <SwiperSlide>
-                    <Demo images={tires} content="Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi." header="Oil Power With Best One Oil" />
+                    <Demo images={tires} content="All seasion light truck & suv tire quet road performance, premium highway all-sesson tire, long life" header="Power is nothing without control" />
                 </SwiperSlide>
                 <SwiperSlide>
-                    <Demo images={engine} content="Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi." header="Oil Power With Best One Oil" />
+                    <Demo images={engine} content="Extend engine life . Give your vechicle a new lease on life with toolmaster." header="TUNE-up before you take off" />
                 </SwiperSlide>
             </Swiper>
         </>

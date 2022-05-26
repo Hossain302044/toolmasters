@@ -10,7 +10,7 @@ const MyOrders = () => {
     const [user] = useAuthState(auth);
 
     const email = user?.email;
-    const { data: orders, isLoading } = useQuery('orders', () => fetch(`http://localhost:5000/bookings?email=${email}`, {
+    const { data: orders, isLoading } = useQuery('orders', () => fetch(`https://ancient-hollows-97544.herokuapp.com/bookings?email=${email}`, {
         method: 'GET',
         headers: {
             'authorization': `bearer ${localStorage.getItem('accessToken')}`
@@ -24,7 +24,7 @@ const MyOrders = () => {
     // useEffect(() => {
     //     const getMyProducts = async () => {
     //         const email = user?.email;
-    //         const url = `http://localhost:5000/bookings?email=${email}`;
+    //         const url = `https://ancient-hollows-97544.herokuapp.com/bookings?email=${email}`;
     //         try {
     //             await fetch(url)
     //                 .then(res => res.json())

@@ -4,7 +4,7 @@ import ManageProductRow from './ManageProductRow';
 const ManageProduct = () => {
     const [products, setProducts] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/products', {
+        fetch('https://ancient-hollows-97544.herokuapp.com/products', {
             method: "GET",
             headers: {
                 'authorization': `bearer ${localStorage.getItem('accessToken')}`
@@ -17,7 +17,7 @@ const ManageProduct = () => {
     const DeleteToProduct = id => {
         const proceed = window.confirm('are you sure we want to delete?');
         if (proceed) {
-            const url = `http://localhost:5000/products/${id}`;
+            const url = `https://ancient-hollows-97544.herokuapp.com/products/${id}`;
             fetch(url, {
                 method: "DELETE",
                 headers: {

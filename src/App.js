@@ -16,6 +16,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import RequireAdmin from './pages/RequireAdmin';
 import ProductsRow from './components/Shop/ProductsRow';
 import Payment from './pages/DashBoard/Payment';
+import Footer from './shared/Footer'
+import NotFound from './pages/NotFound';
 
 function App() {
   return (
@@ -72,8 +74,10 @@ function App() {
               </RequireAdmin>
             } />
           </Route>
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </Navbar>
+      <Footer />
       <ToastContainer />
     </div>
   );

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
+import Loading from './../../shared/Loading'
 
 
 const PaymentFrom = ({ booking }) => {
@@ -14,7 +15,7 @@ const PaymentFrom = ({ booking }) => {
     const { _id, price, email, userName } = booking;
 
     useEffect(() => {
-        fetch('http://localhost:5000/create-payment-intent', {
+        fetch('https://ancient-hollows-97544.herokuapp.com/create-payment-intent', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
@@ -30,6 +31,10 @@ const PaymentFrom = ({ booking }) => {
             })
 
     }, [price]);
+
+    if (processing) {
+        return <Loading></Loading>
+    }
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -84,7 +89,7 @@ const PaymentFrom = ({ booking }) => {
                 transactionId: paymentIntent.id
             }
 
-            fetch(`http://localhost:5000/booking/${_id}`, {
+            fetch(`https://ancient-hollows-97544.herokuapp.com/booking/${_id}`, {
                 method: 'PATCH',
                 headers: {
                     'content-type': 'application/json',

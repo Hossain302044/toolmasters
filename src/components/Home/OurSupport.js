@@ -16,7 +16,7 @@ const OurSupport = () => {
                 <div className='text-center py-20'>
                     <h2 className='text-white text-3xl'><span className='text-primary'>Tool</span>Masters</h2>
                     <h2 className='text-white text-4xl font-bold'>AND COMMITMENT COMBINED</h2>
-                    <div class="mt-5 w-20 h-2 mx-auto bg-primary"></div>
+                    <div className="mt-5 w-20 h-2 mx-auto bg-primary"></div>
                 </div>
                 <div className='grid gap-10 grid-cols-1 md:grid-cols-2 lg:grid-cols-4'>
                     <OurSupportRow icons={biMedal} header='Best' header2='Quality' content="Greate choice for your beautiful automotive" />
