@@ -2,7 +2,6 @@ import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import Navbar from './shared/Navbar';
 import { publicRoutes } from './routes/publicRoutes';
-import Footer from './shared/Footer';
 import Dashboard from './pages/DashBoard/Dashboard';
 import RequireAuth from './pages/RequireAuth';
 import MyProfile from './pages/DashBoard/MyProfile';
@@ -75,8 +74,6 @@ function App() {
           </Route>
         </Routes>
       </Navbar>
-
-      <Footer />
       <ToastContainer />
     </div>
   );

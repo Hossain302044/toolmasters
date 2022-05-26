@@ -4,9 +4,9 @@ import { FaStar } from "react-icons/fa";
 
 const ReviewsCard = ({ review }) => {
     return (
-        <div class="card w-96 bg-base-100 h-[300px] border-2">
-            <div class="card-body h-full">
-                <h2 class="text-2xl uppercase text-primary text-center font-bold">{review.name}</h2>
+        <div className="card w-96 bg-base-100 h-[300px] border-2">
+            <div className="card-body h-full">
+                <h2 className="text-2xl uppercase text-primary text-center font-bold">{review.name}</h2>
                 <div className='flex justify-center items-center'>
                     <div className='flex items-center'>
                         <p className='text-[24px] font-bold text-secondary'>{review.rating}</p>

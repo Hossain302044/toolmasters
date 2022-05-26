@@ -3,6 +3,7 @@ import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { NavLink } from 'react-router-dom';
 import auth from '../firebase.init';
+import Footer from './Footer';
 
 const Navbar = ({ children }) => {
     const [user] = useAuthState(auth);
@@ -14,6 +15,7 @@ const Navbar = ({ children }) => {
 
     const menuItem = <>
         <li><NavLink to='/' className='rounded-lg'>Home</NavLink></li>
+        <li><NavLink to='/products' className='rounded-lg'>Products</NavLink></li>
         <li><NavLink to='/blog' className='rounded-lg'>Blogs</NavLink></li>
         <li><NavLink to='/portfolio' className='rounded-lg'>Portfolio</NavLink></li>
         {
@@ -55,6 +57,7 @@ const Navbar = ({ children }) => {
                     </div>
                 </div>
                 {children}
+                <Footer />
             </div>
             <div className="drawer-side">
                 <label htmlFor="my-drawer-3" className="drawer-overlay"></label>

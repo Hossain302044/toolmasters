@@ -25,8 +25,9 @@ const Reviews = () => {
     return (
         <div className='max-w-screen-xl mx-auto my-[50px]'>
             <div className='my-20'>
-                <h2 className='text-secondary text-center text-4xl font-bold '>Our Happy Clients Reviews</h2>
-                <div class="mt-5 w-20 h-2 mx-auto bg-primary"></div>
+                <h2 className='text-3xl text-center'>Our clients say somethings</h2>
+                <h2 className='text-secondary text-center text-4xl font-bold uppercase'>Our Happy Clients Reviews</h2>
+                <div className="mt-5 w-20 h-2 mx-auto bg-primary"></div>
             </div>
             <div className='py-[50px]'>
                 <Swiper
@@ -48,9 +49,9 @@ const Reviews = () => {
                 >
                     {
                         reviews &&
-                        reviews.map(review => <SwiperSlide>
+                        reviews.map((review, index) => <SwiperSlide>
                             <ReviewsCard
-                                key={review._id}
+                                key={index}
                                 review={review}
                             ></ReviewsCard>
                         </SwiperSlide>

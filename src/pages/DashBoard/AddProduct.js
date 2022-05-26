@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 
 
 const AddProduct = () => {
-    const { register, formState: { errors }, handleSubmit } = useForm();
+    const { reset, register, formState: { errors }, handleSubmit } = useForm();
 
     const imageStorageKey = '0b8c175b6db0be88e6c9c5e4abad5ed2';
 
@@ -42,10 +42,11 @@ const AddProduct = () => {
                         .then(res => res.json())
                         .then(inserted => {
                             if (inserted.insertedId) {
-                                toast.success('Products Uploaded successfully')
+                                toast.success('Products Uploaded successfully');
+                                reset();
                             }
                             else {
-                                toast.error('fail to upload products')
+                                toast.error('fail to upload products');
                             }
                         })
                 }
@@ -54,10 +55,10 @@ const AddProduct = () => {
 
 
     return (
-        <div className=''>
+        <div className='mb-[150px] md:mb-0'>
             <div className='text-center'><h2 className='text-2xl font-bold text-primary uppercase px-5 my-10'>Add Products</h2></div>
             <div className="divider"></div>
-            <div className='ml-10'>
+            <div className='ml-0 md:ml-10'>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="form-control w-full max-w-md">
                         <label className="label">

@@ -63,11 +63,11 @@ const BookingProducts = ({ booking, orderQty, setBooking }) => {
         <div>
             <input type="checkbox" id="booking-modal" className="modal-toggle" />
             <div className="modal">
-                <div className="modal-box w-11/12 max-w-5xl">
+                <div className="modal-box w-11/12 max-w-5xl bg-white">
                     <label for="booking-modal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
                     <h2 className="card-title text-secondary">{name}</h2>
                     <div className="card lg:card-side bg-base-100 mt-10 shadow-xl">
-                        <figure className='border m-3'><img src={img} alt="Album" /></figure>
+                        <figure className='border m-3'><img src={img} className="max-h-[450px]" alt="Album" /></figure>
                         <div className="card-body">
 
                             <form onSubmit={handleBooking}>
@@ -75,35 +75,36 @@ const BookingProducts = ({ booking, orderQty, setBooking }) => {
                                     <label className="label">
                                         <span className="label-text">Name</span>
                                     </label>
-                                    <input type="text" name='name' value={user.displayName} disabled className="input input-bordered w-full max-w-xs" />
+                                    <input type="text" name='name' value={user.displayName} disabled className="input input-bordered w-full" />
                                 </div>
                                 <div className="form-control w-full max-w-xs">
                                     <label className="label">
                                         <span className="label-text">Order Quantity</span>
                                     </label>
-                                    <input type="text" name='qty' value={orderQty} disabled className="input input-bordered w-full max-w-xs" />
+                                    <input type="text" name='qty' value={orderQty} disabled className="input input-bordered w-full" />
                                 </div>
                                 <div className="form-control w-full max-w-xs">
                                     <label className="label">
                                         <span className="label-text">Order Quantity</span>
                                     </label>
-                                    <input type="text" name='price' value={"$" + totalPrice} disabled className="input input-bordered w-full max-w-xs" />
+                                    <input type="text" name='price' value={"$" + totalPrice} disabled className="input input-bordered w-full" />
                                 </div>
                                 <div className="form-control w-full max-w-xs">
                                     <label className="label">
                                         <span className="label-text">Phone Number</span>
                                     </label>
-                                    <input type="text" name='phone' placeholder='Please give me your contact number' className="input input-bordered w-full max-w-xs" required />
+                                    <input type="text" name='phone' placeholder='Please give me your contact number' className="input input-bordered w-full" required />
                                 </div>
                                 <div className="form-control">
                                     <label className="label">
                                         <span className="label-text">Shipping Locations</span>
                                     </label>
-                                    <textarea name='address' className="textarea textarea-bordered w-full max-w-xs h-24" placeholder="Address Please" required></textarea>
+                                    <textarea name='address' className="textarea textarea-bordered w-full h-24" placeholder="Address Please" required></textarea>
                                 </div>
-
-                                <div className="card-actions justify-end">
-                                    <input className="btn btn-primary" type="submit" value="ORDER NOW" />
+                                <div className="form-control mt-5">
+                                    <div className='flex justify-center'>
+                                        <input className="btn btn-primary" type="submit" value="ORDER NOW" />
+                                    </div>
                                 </div>
                             </form>
                         </div>
