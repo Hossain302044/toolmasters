@@ -7,7 +7,6 @@ const PaymentFrom = ({ booking }) => {
     const stripe = useStripe();
     const elements = useElements();
     const [cardError, setCardError] = useState('');
-    const [processing, setProcessing] = useState(false);
     const [success, setSuccess] = useState('');
     const [transactionId, setTransactionId] = useState('');
     const [clientSecret, setClientSecret] = useState('');
@@ -32,9 +31,7 @@ const PaymentFrom = ({ booking }) => {
 
     }, [price]);
 
-    if (processing) {
-        return <Loading></Loading>
-    }
+
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -56,7 +53,6 @@ const PaymentFrom = ({ booking }) => {
 
         setCardError(error?.message || '');
         setSuccess('');
-        setProcessing(true)
 
 
         //confirm card payments
@@ -76,7 +72,6 @@ const PaymentFrom = ({ booking }) => {
 
         if (intentError) {
             setCardError(intentError?.message);
-            setProcessing(false);
         }
         else {
             setCardError('');
@@ -98,7 +93,6 @@ const PaymentFrom = ({ booking }) => {
                 body: JSON.stringify(payment)
             }).then(res => res.json())
                 .then(data => {
-                    setProcessing(false)
                     console.log(data);
                 })
         }
