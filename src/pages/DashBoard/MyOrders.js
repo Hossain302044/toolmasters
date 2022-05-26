@@ -25,7 +25,7 @@ const MyOrders = () => {
     const DeleteToOrder = id => {
         const proceed = window.confirm('are you sure we want to delete?');
         if (proceed) {
-            const url = `http://localhost:5000/bookings/${id}`;
+            const url = `https://ancient-hollows-97544.herokuapp.com/bookings/${id}`;
             fetch(url, {
                 method: "DELETE",
                 headers: {
