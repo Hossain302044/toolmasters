@@ -21,7 +21,9 @@ const ProductsRow = () => {
     }, [product])
 
     const handleMinOrder = (event) => {
-        setOrderQty(event.target.value);
+        const inputQty = event.target.value;
+        const orderIntQrt = parseInt(inputQty);
+        setOrderQty(orderIntQrt);
     }
     const buyProducts = () => {
         console.log(typeof (qty))
