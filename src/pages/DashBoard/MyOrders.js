@@ -1,6 +1,7 @@
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useQuery } from 'react-query';
+import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
 import Loading from '../../shared/Loading';
 import MyOrderRow from './MyOrderRow';
@@ -21,7 +22,7 @@ const MyOrders = () => {
         return <Loading></Loading>
     }
 
-    const DeleteToProduct = id => {
+    const DeleteToOrder = id => {
         const proceed = window.confirm('are you sure we want to delete?');
         if (proceed) {
             const url = `http://localhost:5000/bookings/${id}`;
@@ -33,6 +34,9 @@ const MyOrders = () => {
             })
                 .then(res => res.json())
                 .then(data => {
+                    if (data.acknowledged === true) {
+                        toast.success('Delete Successfully!!')
+                    }
                     refetch();
                 })
         }
@@ -74,7 +78,7 @@ const MyOrders = () => {
                             orders && orders.map(order => <MyOrderRow
                                 key={order._id}
                                 order={order}
-                                DeleteToProduct={DeleteToProduct}
+                                DeleteToOrder={DeleteToOrder}
                             ></MyOrderRow>)
                         }
                     </tbody>

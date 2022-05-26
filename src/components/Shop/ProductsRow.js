@@ -6,7 +6,8 @@ const ProductsRow = () => {
     const { id } = useParams();
     const [product, setProduct] = useState({});
     const [booking, setBooking] = useState(null);
-    const { qty, name, description, price, img, minOrder } = product;
+    const { qty, name, description, img, minOrder } = product;
+    const quantity = parseInt(qty);
     useEffect(() => {
         const url = `https://ancient-hollows-97544.herokuapp.com/products/${id}`;
         fetch(url)
@@ -16,27 +17,24 @@ const ProductsRow = () => {
 
     const [orderQty, setOrderQty] = useState(0);
     useEffect(() => {
-        setOrderQty(minOrder);
-    }, [minOrder])
+        setOrderQty(product.minOrder);
+    }, [product])
 
     const handleMinOrder = (event) => {
         setOrderQty(event.target.value);
     }
-
     const buyProducts = () => {
-        if (qty < orderQty) {
+        console.log(typeof (qty))
+        if (quantity < orderQty) {
             alert(`Out of stack!! Must be order ${qty}`);
             setOrderQty(qty);
-            return;
         }
         else if (orderQty < minOrder) {
             alert(`Must be order ${minOrder}`);
             setOrderQty(minOrder);
-            return;
         }
         setBooking(product);
     }
-    console.log(orderQty * price);
 
     return (
         <div className=''>
