@@ -26,14 +26,14 @@ const ProductsRow = () => {
         setOrderQty(orderIntQrt);
     }
     const buyProducts = () => {
-        console.log(typeof (qty))
+        const orderByPlace = parseInt(minOrder);
         if (quantity < orderQty) {
-            alert(`Out of stack!! Must be order ${qty}`);
-            setOrderQty(qty);
+            alert(`Out of stack!! Must be order ${quantity}`);
+            setOrderQty(quantity);
         }
-        else if (orderQty < minOrder) {
-            alert(`Must be order ${minOrder}`);
-            setOrderQty(minOrder);
+        else if (orderQty < orderByPlace) {
+            alert(`Must be order ${orderByPlace}`);
+            setOrderQty(orderByPlace);
         }
         setBooking(product);
     }
